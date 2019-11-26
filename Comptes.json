@@ -1,0 +1,21 @@
+[ {
+  "numero" : "123",
+  "solde" : 235.88,
+  "bloque" : false
+}, {
+  "numero" : "789",
+  "solde" : 270.0,
+  "bloque" : false
+}, {
+  "numero" : "963",
+  "solde" : 89.0,
+  "bloque" : false
+}, {
+  "numero" : "741",
+  "solde" : 786.0,
+  "bloque" : false
+}, {
+  "numero" : "852",
+  "solde" : 582.0,
+  "bloque" : true
+} ]

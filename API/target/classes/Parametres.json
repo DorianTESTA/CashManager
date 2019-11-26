@@ -1,0 +1,6 @@
+{
+  "password" : "hey",
+  "conn_delay" : 180,
+  "num_attempts" : 2,
+  "num_wrong" : 2
+}

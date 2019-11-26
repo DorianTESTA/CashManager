@@ -1,0 +1,70 @@
+package classes;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+public abstract class Banque {
+    public static List<Compte> listAcc;
+    ObjectMapper mapper = new ObjectMapper();
+    
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Route du fichier à changer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	File file = new File("c:\\Users\\Dorian\\CashManager\\Comptes.json");
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Route du fichier à changer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    public Banque() throws IOException {
+        getAllComptes();
+    }
+
+    public void getAllComptes() throws IOException {
+        listAcc = mapper.readValue(file, new TypeReference<List<Compte>>(){});
+        for(Compte acc : listAcc) {
+            System.out.println("Numero "+ acc.getNumero()+" / Solde : "+acc.getSolde());
+        }
+    }
+
+    public Compte getCompte(String numero){
+        for(Compte acc : listAcc) {
+            if(acc.getNumero().equals(numero)){
+                return acc;
+            }
+        }
+
+        return new Compte();
+    }
+
+    public String validation(String compte_debit, int montant) throws IOException {
+        Compte compte = getCompte(compte_debit);
+        System.out.println("Client : "+compte_debit);
+        System.out.println("Compte : "+compte.getNumero());
+        if(compte_debit.equals(compte.getNumero())) {
+            if(montant < compte.getSolde()) {
+                if(!compte.getBloque()){
+                    changeSolde(compte.getNumero(), compte.getSolde() - montant);
+                    return "Paiment accepté";
+                }
+                return "Carte bloquée";
+            }
+            return "Solde insuffisant";
+        }
+        return "Mauvais compte";
+    }
+
+    public void changeSolde(String numero, int montant) throws IOException {
+        listAcc = mapper.readValue(file, new TypeReference<List<Compte>>(){});
+        for(Compte acc : listAcc) {
+            if(acc.getNumero().equals(numero))
+                acc.setSolde(montant);
+            String message = mapper.writerWithView(Compte.class).writeValueAsString(acc);
+        }
+
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.writeValue(file, listAcc);
+
+        getAllComptes();
+    }
+}

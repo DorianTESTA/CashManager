@@ -1,0 +1,49 @@
+package servlet;
+
+public class Parameters {
+	private String password = "";
+	private int connDelay = 0;
+	private int numAttempts = 0;
+	private int numWrong = 0;
+	
+	public Parameters() {}
+	
+	public Parameters(String pass, int delay, int attempts, int wrong) {
+		this.password = pass;
+		this.connDelay = delay;
+		this.numAttempts = attempts;
+		this.numWrong = wrong;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public void setPassword(String pass) {
+		this.password = pass;
+	}
+	
+	public int getConnDelay() {
+		return this.connDelay;
+	}
+	
+	public void setConnDelay(int delay) {
+		this.connDelay = delay;
+	}
+	
+	public int getNumAttempts() {
+		return this.numAttempts;
+	}
+	
+	public void setNumAttempts(int attempts) {
+		this.numAttempts = attempts;
+	}
+	
+	public int getNumWrong() {
+		return this.numWrong;
+	}
+	
+	public void setNumWrong(int wrong) {
+		this.numWrong = wrong;
+	}
+}

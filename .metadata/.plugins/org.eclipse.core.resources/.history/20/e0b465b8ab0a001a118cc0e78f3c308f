@@ -1,0 +1,18 @@
+package classes;
+
+public class Validation {
+
+    private String compte;
+    private int montant;
+
+    public Validation(String compte, int montant){
+        this.compte = compte;
+        this.montant = montant;
+    }
+
+    public Validation(){}
+
+    public String getCompte(){ return this.compte;}
+
+    public int getMontant(){ return this.montant;}
+}

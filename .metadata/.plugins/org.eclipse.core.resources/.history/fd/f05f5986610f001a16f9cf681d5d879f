@@ -1,0 +1,19 @@
+package classes;
+
+public class Compte {
+    private String numero;
+    private int solde;
+    private boolean bloque;
+
+    public Compte() {}
+
+    public String getNumero(){ return this.numero;}
+
+    public int getSolde(){ return this.solde;}
+
+    public void setSolde(int solde){this.solde = solde;}
+
+    public Boolean getBloque(){ return this.bloque;}
+
+}
+

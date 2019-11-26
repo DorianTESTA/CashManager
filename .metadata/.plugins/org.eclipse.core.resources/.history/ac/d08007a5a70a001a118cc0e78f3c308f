@@ -1,0 +1,29 @@
+package servlet;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Connexion extends HttpServlet {
+	File file = new File("./Parametres.json");
+	ObjectMapper mapper = new ObjectMapper();
+    Parameters server_param;
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		server_param = mapper.readValue(file, Parameters.class);
+		Parameters params = mapper.readValue(request.getInputStream(),Parameters.class);
+		PrintWriter out = response.getWriter();
+		 
+		 if(params.getPassword().equals(server_param.getPassword()))
+			 out.println("{ \"conn_delay\" : "+server_param.getConnDelay()+", \" num_attempts\" : "+server_param.getNumAttempts()+", \"num_wrong\" : "+server_param.getNumWrong()+"}");
+		 else 
+			 out.println("\""+params.getPassword()+"\""+" is not the password to the server.");
+	}
+}

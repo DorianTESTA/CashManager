@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Dorian\CashManager\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+583460917.index
+1277689378.index
+3568030795.index
+3856124810.index
+648240312.index
+1685859473.index

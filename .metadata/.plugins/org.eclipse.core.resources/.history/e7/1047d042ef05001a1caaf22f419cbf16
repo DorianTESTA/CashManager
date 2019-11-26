@@ -1,0 +1,37 @@
+package com.servlet;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@WebServlet("/Connexion")
+public class Connexion extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public Connexion() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String line = null;
+		  try {
+		    BufferedReader reader = request.getReader();
+		    while ((line = reader.readLine()) != null) {
+		    	if(line.equals("password"))
+		    		response.getWriter().append(line);
+		    }
+		  } catch (Exception e) { }
+	}
+
+}

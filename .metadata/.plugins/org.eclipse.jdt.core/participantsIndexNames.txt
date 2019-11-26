@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\Dorian\CashManager\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1455329325.index
+\API\src\main\resources
+C:\Users\Dorian\CashManager\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\417042525.index
+\Serveur\src\main\resources
